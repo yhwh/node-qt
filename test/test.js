@@ -1,7 +1,7 @@
-let fs = require('fs'),
+var fs = require('fs'),
     path = require('path');
 
-let testDir = __dirname+'/img-test/',
+var testDir = __dirname+'/img-test/',
     refDir = __dirname+'/img-ref/';
 
 if (!path.existsSync(testDir)) {
@@ -20,8 +20,8 @@ exports.regression = function(name, pixmap, callback) {
     return;
   }
   
-  let testBuf = fs.readFileSync(testDir+name+'.png');
-  let refBuf = fs.readFileSync(refDir+name+'.png');
+  var testBuf = fs.readFileSync(testDir+name+'.png');
+  var refBuf = fs.readFileSync(refDir+name+'.png');
   if (testBuf.toString() !== refBuf.toString()) {
     console.log('!!! regression error in test:', name);
   }

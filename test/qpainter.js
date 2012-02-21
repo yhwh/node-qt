@@ -27,24 +27,24 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF 
 // THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-let assert = require('assert'),
+var assert = require('assert'),
     fs = require('fs'),
     path = require('path'),
     qt = require('..'),
     test = require('./test');
     
-let app = new qt.QApplication();
+var app = new qt.QApplication();
 
 // Constants
-let width = 100, height = 100;
+var width = 100, height = 100;
 
 // Painter initialization: Widget
 // For widgets it must begin() inside paintEvent()
 {
-  let widget = new qt.QWidget();
-  let paintEventCalled = false;
+  var widget = new qt.QWidget();
+  var paintEventCalled = false;
   widget.paintEvent(function() {
-    let painter = new qt.QPainter();
+    var painter = new qt.QPainter();
     assert.equal( painter.begin(widget), true );
     assert.equal( painter.end(), true );
     paintEventCalled = true;
@@ -55,8 +55,8 @@ let width = 100, height = 100;
 
 // Painter initialization: Pixmap (begin)
 {
-  let pixmap = new qt.QPixmap(width, height);
-  let painter = new qt.QPainter();
+  var pixmap = new qt.QPixmap(width, height);
+  var painter = new qt.QPainter();
   assert.equal( painter.isActive(), false );
   assert.equal( painter.begin(pixmap), true );
   assert.equal( painter.isActive(), true );
@@ -65,9 +65,9 @@ let width = 100, height = 100;
 
 // drawPixmap() - crash test only
 {
-  let pixmap1 = new qt.QPixmap(100, 100);
-  let pixmap2 = new qt.QPixmap(100, 100);
-  let painter = new qt.QPainter;
+  var pixmap1 = new qt.QPixmap(100, 100);
+  var pixmap2 = new qt.QPixmap(100, 100);
+  var painter = new qt.QPainter;
   painter.begin(pixmap1);
 
   painter.drawPixmap(0, 0, pixmap2);
@@ -78,10 +78,10 @@ let width = 100, height = 100;
 
 // drawPixmap() - wrong arg
 {
-  let pixmap1 = new qt.QPixmap(100, 100);
-  let painter = new qt.QPainter();
+  var pixmap1 = new qt.QPixmap(100, 100);
+  var painter = new qt.QPainter();
   painter.begin(pixmap1);
-  let flag = false;
+  var flag = false;
   try {
     painter.drawPixmap(0, 0);
   } catch (e) {
@@ -95,12 +95,12 @@ let width = 100, height = 100;
 
 // strokePath() - crash test
 {
-  let pixmap1 = new qt.QPixmap(100, 100);
-  let painter = new qt.QPainter;
+  var pixmap1 = new qt.QPixmap(100, 100);
+  var painter = new qt.QPainter;
   painter.begin(pixmap1);
 
-  let path = new qt.QPainterPath;
-  let pen = new qt.QPen;
+  var path = new qt.QPainterPath;
+  var pen = new qt.QPen;
   painter.strokePath(path, pen);
 
   painter.end(); // calling .end() before leaving scope ensures pixmaps won't 
@@ -109,11 +109,11 @@ let width = 100, height = 100;
 
 // strokePath() - wrong args
 {
-  let pixmap1 = new qt.QPixmap(100, 100);
-  let painter = new qt.QPainter;
+  var pixmap1 = new qt.QPixmap(100, 100);
+  var painter = new qt.QPainter;
   painter.begin(pixmap1);
 
-  let flag = false;
+  var flag = false;
   try {
     painter.strokePath(1, '2');
   } catch (e) {
@@ -127,8 +127,8 @@ let width = 100, height = 100;
 
 // setPen() - crash test only
 {
-  let pixmap1 = new qt.QPixmap(100, 100);
-  let painter = new qt.QPainter;
+  var pixmap1 = new qt.QPixmap(100, 100);
+  var painter = new qt.QPainter;
   painter.begin(pixmap1);
 
   painter.setPen(new qt.QPen);
@@ -139,11 +139,11 @@ let width = 100, height = 100;
 
 // setPen() - wrong args
 {
-  let pixmap1 = new qt.QPixmap(100, 100);
-  let painter = new qt.QPainter;
+  var pixmap1 = new qt.QPixmap(100, 100);
+  var painter = new qt.QPainter;
   painter.begin(pixmap1);
 
-  let flag = false;
+  var flag = false;
   try {
     painter.setPen(1);
   } catch (e) {
@@ -157,8 +157,8 @@ let width = 100, height = 100;
 
 // setFont() - crash test
 {
-  let pixmap1 = new qt.QPixmap(100, 100);
-  let painter = new qt.QPainter;
+  var pixmap1 = new qt.QPixmap(100, 100);
+  var painter = new qt.QPainter;
   painter.begin(pixmap1);
 
   painter.setFont(new qt.QFont);
@@ -169,11 +169,11 @@ let width = 100, height = 100;
 
 // setFont() - wrong args
 {
-  let pixmap1 = new qt.QPixmap(100, 100);
-  let painter = new qt.QPainter;
+  var pixmap1 = new qt.QPixmap(100, 100);
+  var painter = new qt.QPainter;
   painter.begin(pixmap1);
 
-  let flag = false;
+  var flag = false;
   try {
     painter.setFont(1);
   } catch (e) {
@@ -187,8 +187,8 @@ let width = 100, height = 100;
 
 // setMatrix() - crash test only
 {
-  let pixmap1 = new qt.QPixmap(100, 100);
-  let painter = new qt.QPainter;
+  var pixmap1 = new qt.QPixmap(100, 100);
+  var painter = new qt.QPainter;
   painter.begin(pixmap1);
 
   painter.setMatrix(new qt.QMatrix);
@@ -199,11 +199,11 @@ let width = 100, height = 100;
 
 // setMatrix() - wrong args
 {
-  let pixmap1 = new qt.QPixmap(100, 100);
-  let painter = new qt.QPainter;
+  var pixmap1 = new qt.QPixmap(100, 100);
+  var painter = new qt.QPainter;
   painter.begin(pixmap1);
 
-  let flag = false;
+  var flag = false;
   try {
     painter.setMatrix(1);
   } catch (e) {
@@ -220,8 +220,8 @@ let width = 100, height = 100;
 //
 
 {
-  let pixmap = new qt.QPixmap(width, height);
-  let painter = new qt.QPainter();
+  var pixmap = new qt.QPixmap(width, height);
+  var painter = new qt.QPainter();
 
   painter.begin(pixmap);
 
@@ -230,8 +230,8 @@ let width = 100, height = 100;
   test.regression('painter-drawtext-saved-black', pixmap, function() {
     painter.save();
     pixmap.fill();
-    let brush = new qt.QBrush(qt.GlobalColor.green);
-    let pen = new qt.QPen(brush, 2);
+    var brush = new qt.QBrush(qt.GlobalColor.green);
+    var pen = new qt.QPen(brush, 2);
     painter.setPen(pen);
     
     painter.restore();
@@ -270,8 +270,8 @@ let width = 100, height = 100;
 
   test.regression('painter-drawtext-hello-green', pixmap, function() {
     pixmap.fill();
-    let brush = new qt.QBrush(qt.GlobalColor.green);
-    let pen = new qt.QPen(brush, 2);
+    var brush = new qt.QBrush(qt.GlobalColor.green);
+    var pen = new qt.QPen(brush, 2);
     painter.setPen(pen);
     painter.drawText(0, 20, "hello");
   });
@@ -279,7 +279,7 @@ let width = 100, height = 100;
   // drawImage()
 
   test.regression('painter-drawimage', pixmap, function() {
-    let image = new qt.QImage('resources/qimage.png');
+    var image = new qt.QImage('resources/qimage.png');
     pixmap.fill();
     painter.drawImage(20, 20, image);
   });

@@ -27,14 +27,14 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF 
 // THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-let assert = require('assert');
-let qt = require('..');
+var assert = require('assert');
+var qt = require('..');
 
-let app = new qt.QApplication();
+var app = new qt.QApplication();
 
 // Core API
 {
-  let area = new qt.QScrollArea();
+  var area = new qt.QScrollArea();
   area.setObjectName('top1');
   assert.equal(area.objectName(), 'top1');
 
@@ -52,7 +52,7 @@ let app = new qt.QApplication();
 }
 
 {
-  let area = new qt.QScrollArea();
+  var area = new qt.QScrollArea();
 
   // Sanity check to make prototype/private properties are not leaking
   area.setObjectName('top2');
@@ -64,10 +64,10 @@ let app = new qt.QApplication();
 
 // Constructor- parent widget
 {
-  let widget = new qt.QWidget;
+  var widget = new qt.QWidget;
   widget.setObjectName('topwidget');
 
-  let area = new qt.QScrollArea(widget);
+  var area = new qt.QScrollArea(widget);
   assert.equal(area.parent(), 'topwidget');
   assert.equal(area.x(), 0);
   assert.equal(area.y(), 0);
@@ -79,7 +79,7 @@ let app = new qt.QApplication();
 
 // setWidget()
 {
-  let area = new qt.QScrollArea(),
+  var area = new qt.QScrollArea(),
       widget = new qt.QWidget();
 
   assert.equal(area.widget(), 0);
@@ -89,7 +89,7 @@ let app = new qt.QApplication();
 
 // scrollBars
 {
-  let area = new qt.QScrollArea();
+  var area = new qt.QScrollArea();
   assert.equal(area.horizontalScrollBar() instanceof qt.QScrollBar, true);
   assert.equal(area.verticalScrollBar() instanceof qt.QScrollBar, true);
 }

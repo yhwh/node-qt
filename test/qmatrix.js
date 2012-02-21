@@ -27,21 +27,21 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF 
 // THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-let assert = require('assert'),
+var assert = require('assert'),
     qt = require('..'),
     test = require('./test');
     
-let app = new qt.QApplication();
+var app = new qt.QApplication();
 
 // Constructor
 {
-  let matrix = new qt.QMatrix;
+  var matrix = new qt.QMatrix;
   assert.ok(matrix);
 }
 
 // Constructor: components
 {
-  let matrix = new qt.QMatrix(1, 2, 3, 4, 5, 6);
+  var matrix = new qt.QMatrix(1, 2, 3, 4, 5, 6);
   assert.ok(matrix);
 
   assert.equal(matrix.m11(), 1);
@@ -57,8 +57,8 @@ let app = new qt.QApplication();
 
 // Constructor: another QMatrix
 {
-  let matrix = new qt.QMatrix(1, 2, 3, 4, 5, 6);
-  let matrix2 = new qt.QMatrix(matrix);
+  var matrix = new qt.QMatrix(1, 2, 3, 4, 5, 6);
+  var matrix2 = new qt.QMatrix(matrix);
 
   assert.equal(matrix2.m11(), 1);
   assert.equal(matrix2.m12(), 2);

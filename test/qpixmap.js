@@ -27,24 +27,24 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF 
 // THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-let assert = require('assert'),
+var assert = require('assert'),
     fs = require('fs');
     path = require('path');
     qt = require('..'),
     test = require('./test');
 
-let app = new qt.QApplication();
+var app = new qt.QApplication();
 
 // Constructor
 {
-  let pixmap = new qt.QPixmap(50, 60);
+  var pixmap = new qt.QPixmap(50, 60);
   assert.equal(pixmap.width(), 50);
   assert.equal(pixmap.height(), 60);
 }
 
 // save()
 {
-  let pixmap = new qt.QPixmap(10, 10);
+  var pixmap = new qt.QPixmap(10, 10);
   if (path.existsSync('./__pixmap.png'))
     fs.unlinkSync('__pixmap.png');
   pixmap.save('__pixmap.png');
@@ -54,7 +54,7 @@ let app = new qt.QApplication();
 
 // Bitmap regressions
 {
-  let pixmap = new qt.QPixmap(100, 100);
+  var pixmap = new qt.QPixmap(100, 100);
 
   // can't test regression on a null pixmap since it contains garbage
 

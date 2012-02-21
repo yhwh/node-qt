@@ -27,14 +27,14 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF 
 // THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-let assert = require('assert'),
+var assert = require('assert'),
     qt = require('..');
 
-let app = new qt.QApplication();
+var app = new qt.QApplication();
 
 // Constructor with numeric RGB
 {
-  let color = new qt.QColor(255, 155, 55);
+  var color = new qt.QColor(255, 155, 55);
   assert.equal(color.red(), 255);
   assert.equal(color.green(), 155);
   assert.equal(color.blue(), 55);
@@ -43,7 +43,7 @@ let app = new qt.QApplication();
 
 // Constructor w/ numeric RGBA
 {
-  let color = new qt.QColor(255, 155, 55, 111);
+  var color = new qt.QColor(255, 155, 55, 111);
   assert.equal(color.red(), 255);
   assert.equal(color.green(), 155);
   assert.equal(color.blue(), 55);
@@ -52,7 +52,7 @@ let app = new qt.QApplication();
 
 // Constructor w/ string (CSS-like)
 {
-  let color = new qt.QColor('#ff0f00');
+  var color = new qt.QColor('#ff0f00');
   assert.equal(color.red(), 255);
   assert.equal(color.green(), 15);
   assert.equal(color.blue(), 0);
@@ -61,8 +61,8 @@ let app = new qt.QApplication();
 
 // Constructor from another QColor
 {
-  let color = new qt.QColor('#ff0f00');
-  let color2 = new qt.QColor(color);
+  var color = new qt.QColor('#ff0f00');
+  var color2 = new qt.QColor(color);
   assert.equal(color2.red(), 255);
   assert.equal(color2.green(), 15);
   assert.equal(color2.blue(), 0);
@@ -71,6 +71,6 @@ let app = new qt.QApplication();
 
 // name()
 {
-  let color = new qt.QColor('blue');
+  var color = new qt.QColor('blue');
   assert.equal(color.name(), '#0000ff');
 }

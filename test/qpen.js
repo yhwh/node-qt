@@ -27,28 +27,28 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF 
 // THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-let assert = require('assert'),
+var assert = require('assert'),
     qt = require('..'),
     test = require('./test');
     
-let app = new qt.QApplication();
+var app = new qt.QApplication();
 
 // Constructor
 {
-  let pen = new qt.QPen;
+  var pen = new qt.QPen;
   assert.ok(pen);
 }
 
 // Constructor - QPen (QBrush, ...)
 {
-  let brush = new qt.QBrush(qt.GlobalColor.blue);
-  let pen = new qt.QPen(brush, 10);
+  var brush = new qt.QBrush(qt.GlobalColor.blue);
+  var pen = new qt.QPen(brush, 10);
   assert.ok(pen);
 }
 
 // Constructor - QPen (QColor)
 {
-  let color = new qt.QColor(0, 255, 0);
-  let pen = new qt.QPen(color);
+  var color = new qt.QColor(0, 255, 0);
+  var pen = new qt.QPen(color);
   assert.ok(pen);
 }

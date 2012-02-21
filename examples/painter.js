@@ -27,14 +27,14 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF 
 // THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-let assert = require('assert');
-let qt = require('..');
+var assert = require('assert');
+var qt = require('..');
 
-let app = new qt.QApplication();
+var app = new qt.QApplication();
 
-let window = new qt.QWidget;
-let area = new qt.QScrollArea(window);
-let widget = new qt.QWidget(area);
+var window = new qt.QWidget;
+var area = new qt.QScrollArea(window);
+var widget = new qt.QWidget(area);
 area.setWidget(widget);
 area.setFrameShape(0); // no frame
 
@@ -46,17 +46,17 @@ window.show();
 area.show();
 widget.show();
 
-let pixmap = new qt.QPixmap(1000, 1000);
+var pixmap = new qt.QPixmap(1000, 1000);
 
 widget.paintEvent(function(){
   console.log('paint!');
-  let p = new qt.QPainter();
+  var p = new qt.QPainter();
   p.begin(widget);
   p.drawPixmap(0, 0, pixmap);
   p.end();
 });
 
-let painter = new qt.QPainter();
+var painter = new qt.QPainter();
 painter.begin(pixmap);
 painter.fillRect(0, 0, 1000, 1000, 3);
 

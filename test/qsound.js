@@ -27,15 +27,15 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF 
 // THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-let assert = require('assert'),
+var assert = require('assert'),
     qt = require('..'),
     test = require('./test');
     
-let app = new qt.QApplication();
+var app = new qt.QApplication();
 
 // Constructor
 {
-  let sound = new qt.QSound('resources/conga1.wav');
+  var sound = new qt.QSound('resources/conga1.wav');
   assert.ok(sound);
   assert.equal(sound.fileName(), 'resources/conga1.wav');
 

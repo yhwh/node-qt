@@ -27,22 +27,22 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF 
 // THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-let assert = require('assert'),
+var assert = require('assert'),
     qt = require('..'),
     test = require('./test');
     
-let app = new qt.QApplication();
+var app = new qt.QApplication();
 
 // Constructor
 {
-  let point = new qt.QPointF;
+  var point = new qt.QPointF;
   assert.ok(point);
   assert.equal(point.isNull(), true);
 }
 
 // Constructor: x, y
 {
-  let point = new qt.QPointF(1.23, 3.21);
+  var point = new qt.QPointF(1.23, 3.21);
   assert.ok(point);
   assert.equal(point.isNull(), false);
   assert.equal(point.x(), 1.23);

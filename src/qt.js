@@ -29,9 +29,9 @@
 
 // Load Qt bindindgs binary, ensuring we're in the right location so we can 
 // dynamically load the bundled Qt libraries
-let oldDir = process.cwd();
+var oldDir = process.cwd();
 process.chdir(__dirname + '/../deps/qt-4.8.0/' + process.platform + '/' + process.arch);
-let qt = require(__dirname + '/../build/Release/qt.node');
+var qt = require(__dirname + '/../build/Release/qt.node');
 process.chdir(oldDir);
 
 //

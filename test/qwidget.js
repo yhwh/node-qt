@@ -27,14 +27,14 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF 
 // THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-let assert = require('assert');
-let qt = require('..');
+var assert = require('assert');
+var qt = require('..');
 
-let app = new qt.QApplication();
+var app = new qt.QApplication();
 
 // Core API
 {
-  let widget = new qt.QWidget();
+  var widget = new qt.QWidget();
   widget.setObjectName('top1');
   assert.equal(widget.objectName(), 'top1');
 
@@ -56,7 +56,7 @@ let app = new qt.QApplication();
 }
 
 {
-  let widget = new qt.QWidget();
+  var widget = new qt.QWidget();
 
   // Sanity check to make prototype/private properties are not leaking
   widget.setObjectName('top2');
@@ -65,7 +65,7 @@ let app = new qt.QApplication();
   assert.equal(widget.size().width(), 100);
   assert.equal(widget.size().height(), 200);
 
-  let widget2 = new qt.QWidget(widget);
+  var widget2 = new qt.QWidget(widget);
   assert.equal(widget2.parent(), 'top2');
 
   assert.equal(widget2.x(), 0);
@@ -82,8 +82,8 @@ let app = new qt.QApplication();
 
 // Events
 {
-  let capturedEvents = [];
-  let widget = new qt.QWidget;
+  var capturedEvents = [];
+  var widget = new qt.QWidget;
 
   // Handlers
   widget.mousePressEvent(function(e) {
@@ -106,14 +106,14 @@ let app = new qt.QApplication();
   widget.show(); // capturedEvents: 0
 
   // Test mouse, keyboard, etc
-  let events = new qt.QTestEventList();
+  var events = new qt.QTestEventList();
   events.addMouseClick(qt.MouseButton.LeftButton); // capturedEvents: 1
   events.addMouseClick(qt.MouseButton.RightButton); // capturedEvents: 2
   events.addKeyPress('a'); // capturedEvents: 3
   events.addKeyPress(qt.Key.Key_Left); // capturedEvents: 4
   events.simulate(widget);
 
-  let timer = setInterval(function() {
+  var timer = setInterval(function() {
     app.processEvents();
   }, 0);
 

@@ -27,26 +27,26 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF 
 // THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-let assert = require('assert'),
+var assert = require('assert'),
     qt = require('..');
 
-let app = new qt.QApplication();
+var app = new qt.QApplication();
 
 // Constructor- empty
 {
-  let image = new qt.QImage;
+  var image = new qt.QImage;
   assert.ok(image);
   assert.equal(image.isNull(), true);
 }
 
 // Constructor- filename
 {
-  let image = new qt.QImage('resources/qimage.png');
+  var image = new qt.QImage('resources/qimage.png');
   assert.equal(image.isNull(), false);
 }
 
 // Constructor- bad filename
 {
-  let image = new qt.QImage('BAD-FILE');
+  var image = new qt.QImage('BAD-FILE');
   assert.equal(image.isNull(), true);
 }

@@ -27,12 +27,12 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF 
 // THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-let assert = require('assert');
-let qt = require('..');
+var assert = require('assert');
+var qt = require('..');
 
-let app = new qt.QApplication();
+var app = new qt.QApplication();
 
-let sound = new qt.QSound('conga1.wav');
+var sound = new qt.QSound('conga1.wav');
 sound.setLoops(3);
 sound.play();
 

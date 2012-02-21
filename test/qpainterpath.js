@@ -27,15 +27,15 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF 
 // THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-let assert = require('assert'),
+var assert = require('assert'),
     qt = require('..'),
     test = require('./test');
     
-let app = new qt.QApplication();
+var app = new qt.QApplication();
 
 // Constructor
 {
-  let path = new qt.QPainterPath;
+  var path = new qt.QPainterPath;
   assert.ok(path);
   assert.equal(path.currentPosition().x(), 0);
   assert.equal(path.currentPosition().y(), 0);
@@ -43,32 +43,32 @@ let app = new qt.QApplication();
 
 // moveTo
 {
-  let path = new qt.QPainterPath;
+  var path = new qt.QPainterPath;
   path.moveTo(new qt.QPointF(123, 456));
-  let point = path.currentPosition();
+  var point = path.currentPosition();
   assert.equal(point.x(), 123);
   assert.equal(point.y(), 456);
 }
 
 // lineTo
 {
-  let path = new qt.QPainterPath;
+  var path = new qt.QPainterPath;
   path.lineTo(new qt.QPointF(1, 2));
-  let point = path.currentPosition();
+  var point = path.currentPosition();
   assert.equal(point.x(), 1);
   assert.equal(point.y(), 2);
 }
 
 // closeSubpath
 {
-  let path = new qt.QPainterPath;
+  var path = new qt.QPainterPath;
   path.lineTo(new qt.QPointF(1, 2));
-  let point = path.currentPosition();
+  var point = path.currentPosition();
   assert.equal(point.x(), 1);
   assert.equal(point.y(), 2);
 
   path.closeSubpath();
-  let point2 = path.currentPosition();
+  var point2 = path.currentPosition();
   assert.equal(point2.x(), 0);
   assert.equal(point2.y(), 0);  
 }

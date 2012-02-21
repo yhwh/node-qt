@@ -27,46 +27,46 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF 
 // THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-let assert = require('assert'),
+var assert = require('assert'),
     qt = require('..');
 
-let app = new qt.QApplication();
+var app = new qt.QApplication();
 
 // Constructor
 {
-  let font = new qt.QFont;
+  var font = new qt.QFont;
   assert.ok(font);
 }
 
 // Constructor- family
 {
-  let font = new qt.QFont('helvetica');
+  var font = new qt.QFont('helvetica');
   assert.equal(font.family(), 'helvetica');
 }
 
 // Constructor- family, pointsize
 {
-  let font = new qt.QFont('helvetica', 12);
+  var font = new qt.QFont('helvetica', 12);
   assert.equal(font.pointSize(), 12);
 }
 
 // Constructor- from QFont
 {
-  let font = new qt.QFont('helvetica');
-  let font2 = new qt.QFont(font);
+  var font = new qt.QFont('helvetica');
+  var font2 = new qt.QFont(font);
   assert.equal(font2.family(), 'helvetica');
 }
 
 // setFamily()
 {
-  let font = new qt.QFont;
+  var font = new qt.QFont;
   font.setFamily('helvetica');
   assert.equal(font.family(), 'helvetica');
 }
 
 // pixelSize()
 {
-  let font = new qt.QFont;
+  var font = new qt.QFont;
   font.setPixelSize(12);
   assert.equal(font.pixelSize(), 12);
   font.setPixelSize(10.123);
@@ -75,7 +75,7 @@ let app = new qt.QApplication();
 
 // pointSizeF()
 {
-  let font = new qt.QFont;
+  var font = new qt.QFont;
   font.setPointSizeF(12.123);
   assert.equal(font.pointSizeF(), 12.123);
 }
