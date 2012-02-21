@@ -1,0 +1,9 @@
+argv = ['/Users/artur/.nvm/v0.6.10/bin/node-waf', 'configure', 'build']
+blddir = '/Users/artur/Dropbox/projs/node-qt/src/build'
+commands = {'dist': 0, 'configure': True, 'distcheck': 0, 'install': 0, 'build': True, 'clean': 0, 'distclean': 0, 'check': 0, 'uninstall': 0}
+cwd = '/Users/artur/Dropbox/projs/node-qt/src'
+environ = {'TERM_SESSION_ID': 'C9F9A955-A821-42F4-B483-977C11ED9734', 'SSH_AUTH_SOCK': '/tmp/launch-hGSZcD/Listeners', 'PYTHONPATH': '/usr/local/lib/python2.7/site-packages', 'VERSIONER_PYTHON_PREFER_32_BIT': 'no', 'TERM_PROGRAM_VERSION': '303', 'Apple_PubSub_Socket_Render': '/tmp/launch-6H7MoF/Render', 'LOGNAME': 'artur', 'USER': 'artur', 'NVM_DIR': '/Users/artur/.nvm', 'PATH': '/Users/artur/.nvm/v0.6.10/bin:/usr/local/share/python:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/Users/artur/util', 'HOME': '/Users/artur', 'NVM_BIN': '/Users/artur/.nvm/v0.6.10/bin', 'DISPLAY': '/tmp/launch-79fzQ0/org.x:0', '_': '/Users/artur/.nvm/v0.6.10/bin/node-waf', 'TERM_PROGRAM': 'Apple_Terminal', 'LANG': 'en_US.UTF-8', 'PDFJSBOT_STAGING': 'yes', 'TERM': 'xterm-256color', 'SHELL': '/bin/bash', 'Apple_Ubiquity_Message': '/tmp/launch-fQfqQr/Apple_Ubiquity_Message', 'VERSIONER_PYTHON_VERSION': '2.7', 'SHLVL': '3', 'GITHUB_CREDENTIALS': 'pdfjsbot:pdfjsforall1', 'NVM_PATH': '/Users/artur/.nvm/v0.6.10/lib/node', 'PWD': '/Users/artur/Dropbox/projs/node-qt/src', 'TMPDIR': '/var/folders/9c/54sxxg2s0_922fpxfc5n1nsm0000gn/T/', 'MANPATH': '/Users/artur/.nvm/v0.6.10/share/man:', '__CF_USER_TEXT_ENCODING': '0x1F5:0:0', 'COMMAND_MODE': 'unix2003'}
+files = []
+hash = 0
+options = {'compile_targets': None, 'force': False, 'verbose': 0, 'nocache': False, 'progress_bar': 0, 'destdir': '', 'keep': False, 'zones': '', 'blddir': '', 'prefix': '/usr/local/', 'jobs': 8, 'srcdir': '', 'check_cxx_compiler': 'g++'}
+srcdir = '/Users/artur/Dropbox/projs/node-qt/src'
