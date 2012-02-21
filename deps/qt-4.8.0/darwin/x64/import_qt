@@ -34,3 +34,7 @@ install_name_tool -id lib/QtTest.framework/Versions/4/QtTest lib/QtTest.framewor
 # Update internal refs
 install_name_tool -change ${QT_PATH}/lib/QtCore.framework/Versions/4/QtCore lib/QtCore.framework/Versions/4/QtCore lib/QtGui.framework/Versions/4/QtGui
 install_name_tool -change ${QT_PATH}/lib/QtCore.framework/Versions/4/QtCore lib/QtCore.framework/Versions/4/QtCore lib/QtTest.framework/Versions/4/QtTest
+
+# Break unncessary references to old path to avoid Qt's weird fallback
+sed -i.bak -E 's/Cellar/______/g' lib/QtCore.framework/Versions/4/QtCore
+rm -f lib/QtCore.framework/Versions/4/QtCore.bak
