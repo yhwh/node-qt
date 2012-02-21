@@ -20,4 +20,3 @@ def build(bld):
   obj.includes = ['../deps/qt-4.8.0/darwin/x64/include','../deps/qt-4.8.0/darwin/x64/include/QtCore','../deps/qt-4.8.0/darwin/x64/include/QtGui','../deps/qt-4.8.0/darwin/x64/include/QtTest']
   obj.frameworkpath = ['../../deps/qt-4.8.0/darwin/x64/lib']
   obj.framework = ['QtCore','QtGui','QtTest']
-  obj.linkflags = ['-static']
