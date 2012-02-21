@@ -1,8 +1,8 @@
 //
 // maker.js
-// Zero-dependency Make utility with built-in Unix-like commands
+// Make tool for Node.js with built-in Unix-like commands
 //
-// Copyright (c) Artur Adib, 2012
+// Copyright (c) 2012 Artur Adib
 // http://github.com/arturadib/maker.js
 //
 
@@ -474,9 +474,9 @@ global.external = wrap('external', function(cmd, opts) {
   if (!path.existsSync(cmd) && !where) {
     state.fatal = options.required;
     if (state.fatal)
-      error('   Fatal: could not find required command in any known path');
+      error('   Fatal: could not find required command in PATH');
     else
-      error('   could not find command in any known path', true);
+      error('   could not find command in PATH', true);
     return null;
   }
 

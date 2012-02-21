@@ -27,7 +27,12 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF 
 // THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-let qt = require('../build/Release/qt');
+// Load Qt bindindgs binary, ensuring we're in the right location so we can 
+// dynamically load the bundled Qt libraries
+let oldDir = process.cwd();
+process.chdir(__dirname + '/../deps/qt-4.8.0/' + process.platform + '/' + process.arch);
+let qt = require(__dirname + '/../build/Release/qt.node');
+process.chdir(oldDir);
 
 //
 // Qt::MouseButton

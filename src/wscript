@@ -17,12 +17,7 @@ def build(bld):
                 'qimage.cc', 'qpointf.cc', 'qpainterpath.cc', 'qfont.cc',
                 'qmatrix.cc', 'qsound.cc', 'qscrollarea.cc', 'qscrollbar.cc']
   
-  # Example of valid instantiated template - it will contain these lines:
-  # obj.includes =  ['/usr/local/Cellar/qt/4.8.0/include', '/usr/local/Cellar/qt/4.8.0/include/QtCore', '/usr/local/Cellar/qt/4.8.0/include/QtGui', '/usr/local/Cellar/qt/4.8.0/include/QtTest']
-  # obj.frameworkpath = ['/usr/local/Cellar/qt/4.8.0/lib']
-  # obj.framework = ['QtCore', 'QtGui', 'QtTest']
-
-
-  obj.includes = ['/usr/local/Cellar/qt/4.8.0/include','/usr/local/Cellar/qt/4.8.0/include/QtCore','/usr/local/Cellar/qt/4.8.0/include/QtGui','/usr/local/Cellar/qt/4.8.0/include/QtTest']
-  obj.frameworkpath = ['/usr/local/Cellar/qt/4.8.0/lib']
+  obj.includes = ['../deps/qt-4.8.0/darwin/x64/include','../deps/qt-4.8.0/darwin/x64/include/QtCore','../deps/qt-4.8.0/darwin/x64/include/QtGui','../deps/qt-4.8.0/darwin/x64/include/QtTest']
+  obj.frameworkpath = ['../../deps/qt-4.8.0/darwin/x64/lib']
   obj.framework = ['QtCore','QtGui','QtTest']
+  obj.linkflags = ['-static']

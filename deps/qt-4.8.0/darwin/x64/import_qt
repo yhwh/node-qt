@@ -1,0 +1,36 @@
+#!/bin/bash
+
+#
+# Only repo maintainers should need to use this
+# Copies all necessary Qt frameworks into the current dir, and updates
+# the LD paths
+#
+
+QT_PATH=/usr/local/Cellar/qt/4.8.0
+
+echo Removing existing copy
+rm -rf include lib
+mkdir include lib
+
+echo Importing copy from ${QT_PATH}
+cp -R ${QT_PATH}/lib/QtCore.framework \
+      ${QT_PATH}/lib/QtGui.framework \
+      ${QT_PATH}/lib/QtTest.framework \
+      lib
+
+cd include
+ln -s ../lib/QtCore.framework/Versions/4/Headers QtCore
+ln -s ../lib/QtGui.framework/Versions/4/Headers QtGui
+ln -s ../lib/QtTest.framework/Versions/4/Headers QtTest
+cd ..
+
+chmod -R u+rw *
+
+# Update ids
+install_name_tool -id lib/QtCore.framework/Versions/4/QtCore lib/QtCore.framework/Versions/4/QtCore
+install_name_tool -id lib/QtGui.framework/Versions/4/QtGui lib/QtGui.framework/Versions/4/QtGui
+install_name_tool -id lib/QtTest.framework/Versions/4/QtTest lib/QtTest.framework/Versions/4/QtTest
+
+# Update internal refs
+install_name_tool -change ${QT_PATH}/lib/QtCore.framework/Versions/4/QtCore lib/QtCore.framework/Versions/4/QtCore lib/QtGui.framework/Versions/4/QtGui
+install_name_tool -change ${QT_PATH}/lib/QtCore.framework/Versions/4/QtCore lib/QtCore.framework/Versions/4/QtCore lib/QtTest.framework/Versions/4/QtTest
