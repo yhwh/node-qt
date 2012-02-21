@@ -436,8 +436,7 @@ global.exists = wrap('exists', function(str) {
 //@ + `silent`: If `true` will suppress all output from command, otherwise both `stdout` and `stderr`
 //@ will be piped to the console.
 //@
-//@ The callable function `fn()` returns a `Boolean()` object that is true if there were any errors.
-//@ The returned object has the additional properties: `{ output:..., code:... }`, containing the
+//@ The callable function `fn()` returns the object `{ output:..., code:... }`, containing the
 //@ program's `output` (stdout + stderr) and its exit `code`.
 global.external = wrap('external', function(cmd, opts) {
   if (!cmd)
@@ -835,12 +834,12 @@ function execSync(cmd, args, opts) {
   if (platform === 'win')
     cmdLine += ' > '+stdoutFile;
   else
-    cmdLine += ' 1>'+stdoutFile + ' 2>'+stdoutFile;
+    cmdLine += ' &>'+stdoutFile; // both stdout and stderr to output file
 
   var script = 
    "var child = require('child_process'), \
         fs = require('fs'); \
-    child.exec('"+escape(cmdLine)+"', {env: process.env}, function(err, stdout, stderr) { \
+    child.exec('"+escape(cmdLine)+"', {env: process.env}, function(err) { \
       fs.writeFileSync('"+escape(codeFile)+"', err ? err.code : '0'); \
     });";
 
@@ -870,10 +869,11 @@ function execSync(cmd, args, opts) {
   fs.unlinkSync(stdoutFile);
   fs.unlinkSync(codeFile);
 
-  // True if failed, false if not
-  var obj = new Boolean(code === 0 ? false : true);
-  obj.output = stdout;
-  obj.code = code;
+  // True if successful, false if not
+  var obj = {
+    code: code,
+    output: stdout
+  };
   return obj;
 } // execSync()
 

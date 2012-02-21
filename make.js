@@ -2,7 +2,7 @@
 require('./maker');
 
 var node = external('node', {required:true});
-var nodewaf = external('node-waf', {required:true});
+var nodegyp = external('node-gyp', {required:true});
 var root = pwd();
 
 target.all = function() {
@@ -11,20 +11,32 @@ target.all = function() {
 
 target.build = function() {
   cd(root);
+  var bin = 'bin/';
 
   echo('_________________________________________________________________');
   echo('Building Qt bindings');
-  echo();
 
-  cd('src');
-  rm('-rf build');
-  
-  // Build it!
-  if (!nodewaf('configure build'))
+  // Configure
+  echo();
+  echo('Configuring...');
+  if (nodegyp('configure').code !== 0)
     exit(1);
   
-  rm('-rf ../build')
-  mv('build/ ..');
+  // Build it
+  echo();
+  echo('Building...');
+  nodegyp('build');
+  
+  // Clean up
+  echo();
+  echo('Cleaning up...');
+  rm('-rf '+bin);
+  mkdir(bin);
+  mv('out/Release/qt.node '+bin);
+  nodegyp('clean');
+
+  echo();
+  echo('Build successful. Binaries installed in: '+bin);
 }
 
 target.test = function() {
