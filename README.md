@@ -1,6 +1,8 @@
 # Node-Qt
 
-Node-Qt provides native bindings to the [Qt library](http://developer.qt.nokia.com/doc/qt-4.8/) from Node.js. It is being developed primarily to support the [Calango](http://github.com/arturadib/calango) project (HTML5 APIs for Node.js), but other contributions are welcome.
+Node-Qt provides native C++ bindings to the [Qt library](http://developer.qt.nokia.com/doc/qt-4.8/) as a [Node.js addon](http://nodejs.org/docs/latest/api/addons.html). It is being developed primarily to support the [Calango](http://github.com/arturadib/calango) project (low-level HTML5 APIs for Node.js), so most of the implemented bindings concern graphics, audio, and input primitives from the `QtGui` module.
+
+Contributions towards other parts of Qt are welcome.
 
 
 
@@ -31,7 +33,7 @@ window.show();
 setInterval(app.processEvents, 0);
 ```
 
-See `examples/` for more.
+For more, see `examples/` or the [Calango](http://github.com/arturadib/calango) project.
 
 
 
@@ -73,25 +75,18 @@ There is no need to install Qt - the necessary binaries are bundled in `deps/`.
 2. `qclass.cc`: Implement method as per `Example()` in `template.cc`
 3. `qclass.cc`: Expose method to JavaScript via `tpl->PrototypeTemplate()` call in `Initialize()`. Again see template.cc.
 
+#### Common errors
 
-
-
-## Common errors
-
-This is a list of common errors when loading a Node module, and their possible
-solutions:
-
+This is a list of common errors when experimenting with Node addons, and their possible solutions:
 
 **Out of memory**
 
 `name` in `NODE_MODULE(name, ...)` does not match target name?
 
-
 **Unable to load shared library**
 
 `(v8 object)->Set()` called to register a method, but method implementation 
 is missing?
-
 
 **Segmentation fault**
 
