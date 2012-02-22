@@ -58,7 +58,7 @@ There is no need to install Qt - the necessary binaries are bundled in `deps/`.
 
 ## Contributing
 
-#### Creating new class/files
+#### Creating new classes
 
 1. Create your files (e.g. `qclass.h`, `qclass.cc`) from the provided templates `src/template.h`, `src/template.cc`
 2. `qclass.*`: search and replace all occurrences of `__Template__`, `__TEMPLATE__`, and `__template__` with the corresponding class name

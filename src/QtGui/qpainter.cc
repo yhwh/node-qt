@@ -29,7 +29,7 @@
 
 #define BUILDING_NODE_EXTENSION
 #include <node.h>
-#include "qt_v8.h"
+#include "../qt_v8.h"
 #include "qpainter.h"
 #include "qpixmap.h"
 #include "qcolor.h"
@@ -113,8 +113,6 @@ Handle<Value> QPainterWrap::Begin(const Arguments& args) {
   if (!args[0]->IsObject())
     return ThrowException(Exception::TypeError(
         String::New("QPainterWrap:Begin: bad arguments")));
-
-  QPaintDevice* device;
 
   QString constructor_name = 
     qt_v8::ToQString(args[0]->ToObject()->GetConstructorName());

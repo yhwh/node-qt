@@ -29,9 +29,9 @@
 
 #define BUILDING_NODE_EXTENSION
 #include <node.h>
+#include "../QtCore/qpointf.h"
 #include "qpainterpath.h"
-#include "qpointf.h"
-#include "qt_v8.h"
+#include "../qt_v8.h"
 
 using namespace v8;
 

@@ -29,10 +29,10 @@
 
 #define BUILDING_NODE_EXTENSION
 #include <node.h>
+#include "../qt_v8.h"
 #include "qpen.h"
 #include "qbrush.h"
 #include "qcolor.h"
-#include "qt_v8.h"
 
 using namespace v8;
 

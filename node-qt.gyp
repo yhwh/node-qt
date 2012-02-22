@@ -3,12 +3,29 @@
     {
       'target_name': 'qt',
       'sources': [
-        'src/qt.cc', 'src/qapplication.cc', 'src/qwidget.cc', 'src/qsize.cc', 
-        'src/qmouseevent.cc', 'src/qkeyevent.cc',
-        'src/qtesteventlist.cc', 'src/qpixmap.cc',
-        'src/qpainter.cc', 'src/qcolor.cc', 'src/qbrush.cc', 'src/qpen.cc',
-        'src/qimage.cc', 'src/qpointf.cc', 'src/qpainterpath.cc', 'src/qfont.cc',
-        'src/qmatrix.cc', 'src/qsound.cc', 'src/qscrollarea.cc', 'src/qscrollbar.cc'
+        'src/qt.cc', 
+
+        'src/QtCore/qsize.cc',
+        'src/QtCore/qpointf.cc',
+
+        'src/QtGui/qapplication.cc',
+        'src/QtGui/qwidget.cc',
+        'src/QtGui/qmouseevent.cc',
+        'src/QtGui/qkeyevent.cc',
+        'src/QtGui/qpixmap.cc',
+        'src/QtGui/qpainter.cc',
+        'src/QtGui/qcolor.cc',
+        'src/QtGui/qbrush.cc',
+        'src/QtGui/qpen.cc',
+        'src/QtGui/qimage.cc',
+        'src/QtGui/qpainterpath.cc',
+        'src/QtGui/qfont.cc',
+        'src/QtGui/qmatrix.cc',
+        'src/QtGui/qsound.cc',
+        'src/QtGui/qscrollarea.cc',
+        'src/QtGui/qscrollbar.cc',
+
+        'src/QtTest/qtesteventlist.cc'
       ],
       'conditions': [
         ['OS=="mac"', {

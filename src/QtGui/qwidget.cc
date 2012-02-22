@@ -29,9 +29,9 @@
 
 #define BUILDING_NODE_EXTENSION
 #include <node.h>
-#include "qt_v8.h"
+#include "../qt_v8.h"
+#include "../QtCore/qsize.h"
 #include "qwidget.h"
-#include "qsize.h"
 #include "qmouseevent.h"
 #include "qkeyevent.h"
 

@@ -29,8 +29,8 @@
 
 #define BUILDING_NODE_EXTENSION
 #include <node.h>
+#include "../qt_v8.h"
 #include "qsound.h"
-#include "qt_v8.h"
 
 using namespace v8;
 

@@ -29,12 +29,12 @@
 
 #define BUILDING_NODE_EXTENSION
 #include <node.h>
-#include "qt_v8.h"
+#include <QFrame>
+#include "../qt_v8.h"
+#include "../QtCore/qsize.h"
 #include "qscrollarea.h"
 #include "qwidget.h"
-#include "qsize.h"
 #include "qscrollbar.h"
-#include <QFrame>
 
 using namespace v8;
 

@@ -29,9 +29,9 @@
 
 #define BUILDING_NODE_EXTENSION
 #include <node.h>
+#include "../qt_v8.h"
 #include "qpixmap.h"
 #include "qcolor.h"
-#include "qt_v8.h"
 
 using namespace v8;
 

@@ -25,7 +25,8 @@ target.build = function() {
   // Build it
   echo();
   echo('Building...');
-  nodegyp('build');
+  if (nodegyp('build').code !== 0)
+    exit(1);
   
   // Clean up
   echo();
@@ -36,7 +37,8 @@ target.build = function() {
   nodegyp('clean');
 
   echo();
-  echo('Build successful. Binaries installed in: '+bin);
+  echo('Build successful. Binaries installed in:');
+  echo('   '+bin);
 }
 
 target.test = function() {

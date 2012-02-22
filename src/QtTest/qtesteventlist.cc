@@ -29,9 +29,9 @@
 
 #define BUILDING_NODE_EXTENSION
 #include <node.h>
+#include "../qt_v8.h"
+#include "../QtGui/qwidget.h"
 #include "qtesteventlist.h"
-#include "qwidget.h"
-#include "qt_v8.h"
 
 using namespace v8;
 

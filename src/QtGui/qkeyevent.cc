@@ -30,7 +30,7 @@
 #define BUILDING_NODE_EXTENSION
 #include <node.h>
 #include "qkeyevent.h"
-#include "qt_v8.h"
+#include "../qt_v8.h"
 
 using namespace v8;
 

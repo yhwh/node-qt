@@ -30,25 +30,27 @@
 #define BUILDING_NODE_EXTENSION
 #include <node.h>
 
-#include "qapplication.h"
-#include "qwidget.h"
-#include "qsize.h"
-#include "qmouseevent.h"
-#include "qkeyevent.h"
-#include "qtesteventlist.h"
-#include "qpixmap.h"
-#include "qpainter.h"
-#include "qcolor.h"
-#include "qbrush.h"
-#include "qpen.h"
-#include "qimage.h"
-#include "qpointf.h"
-#include "qpainterpath.h"
-#include "qfont.h"
-#include "qmatrix.h"
-#include "qsound.h"
-#include "qscrollarea.h"
-#include "qscrollbar.h"
+#include "QtCore/qsize.h"
+#include "QtCore/qpointf.h"
+
+#include "QtGui/qapplication.h"
+#include "QtGui/qwidget.h"
+#include "QtGui/qmouseevent.h"
+#include "QtGui/qkeyevent.h"
+#include "QtGui/qpixmap.h"
+#include "QtGui/qpainter.h"
+#include "QtGui/qcolor.h"
+#include "QtGui/qbrush.h"
+#include "QtGui/qpen.h"
+#include "QtGui/qimage.h"
+#include "QtGui/qpainterpath.h"
+#include "QtGui/qfont.h"
+#include "QtGui/qmatrix.h"
+#include "QtGui/qsound.h"
+#include "QtGui/qscrollarea.h"
+#include "QtGui/qscrollbar.h"
+
+#include "QtTest/qtesteventlist.h"
 
 using namespace v8;
 
