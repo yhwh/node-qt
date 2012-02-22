@@ -60,6 +60,8 @@ There is no need to install Qt - the necessary binaries are bundled in `deps/`.
 
 ## Contributing
 
+Please provide a test case for every new binding added. See `test/` for examples of unit tests.
+
 #### Creating new classes
 
 1. Create your files (e.g. `qclass.h`, `qclass.cc`) from the provided templates `src/template.h`, `src/template.cc`
@@ -79,15 +81,15 @@ There is no need to install Qt - the necessary binaries are bundled in `deps/`.
 
 This is a list of common errors when experimenting with Node addons, and their possible solutions:
 
-**Out of memory**
+_"Out of memory"_
 
 `name` in `NODE_MODULE(name, ...)` does not match target name?
 
-**Unable to load shared library**
+_"Unable to load shared library"_
 
 `(v8 object)->Set()` called to register a method, but method implementation 
 is missing?
 
-**Segmentation fault**
+_"Segmentation fault"_
 
 Tough luck :) Did you forget to `new` a wrapped object?
