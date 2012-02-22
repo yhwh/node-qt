@@ -27,14 +27,23 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF 
 // THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-var qt = require('..');
+var qt = require('..'),
+    app = new qt.QApplication,
+    window = new qt.QWidget;
 
-var app = new qt.QApplication();
+// Prevent objects from being GC'd
+global.app = app;
+global.window = window;
 
-var sound = new qt.QSound('conga1.wav');
-sound.setLoops(3);
-sound.play();
+window.paintEvent(function(){
+  var p = new qt.QPainter();
+  p.begin(window);
+  p.drawText(20, 30, 'hello node, hello qt');
+  p.end();
+});
 
-setInterval(function() {
-  app.processEvents();
-}, 0);
+window.resize(300, 150);
+window.show();
+
+// Integrate with Node's event loop
+setInterval(app.processEvents, 0);
