@@ -9,7 +9,7 @@ Node-Qt provides native bindings to the [Qt library](http://qt.nokia.com/product
 #### Hello world
 
 ```javascript
-var qt = require('..'),
+var qt = require('node-qt'),
     app = new qt.QApplication,
     window = new qt.QWidget;
 
@@ -40,7 +40,7 @@ See `examples/` for more.
 
 ## Building
 
-You will need to install Node's addon build tool [node-gyp](https://github.com/TooTallNate/node-gyp). Then from the node-qt project dir:
+You will need to install Node's addon build tool [node-gyp](https://github.com/TooTallNate/node-gyp). From the node-qt project dir, run:
 
 ```
 $ npm install -g node-gyp
