@@ -52,7 +52,7 @@ target.test = function() {
   rm('-f img-test/*');
   for (f in ls('*.js')) {
     echo('Running test file '+f);
-    node('--harmony_typeof --harmony_proxies --harmony_weakmaps --harmony_block_scoping '+f);
+    node(f);
   }
 }
 

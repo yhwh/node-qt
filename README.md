@@ -1,6 +1,6 @@
 # Node-Qt
 
-Node-Qt provides native bindings to the [Qt library](http://qt.nokia.com/products/) from Node.js. It is being developed primarily to support the [Calango](http://github.com/arturadib/calango) project (HTML5 APIs for Node.js), but other contributions are welcome.
+Node-Qt provides native bindings to the [Qt library](http://developer.qt.nokia.com/doc/qt-4.8/) from Node.js. It is being developed primarily to support the [Calango](http://github.com/arturadib/calango) project (HTML5 APIs for Node.js), but other contributions are welcome.
 
 
 
