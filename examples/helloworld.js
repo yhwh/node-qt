@@ -45,5 +45,5 @@ window.paintEvent(function(){
 window.resize(300, 150);
 window.show();
 
-// Integrate with Node's event loop
+// Join Node's event loop
 setInterval(app.processEvents, 0);

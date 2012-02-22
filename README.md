@@ -1,12 +1,12 @@
 # Node-Qt
 
-Node-Qt provides native bindings to the [Qt library](http://qt.nokia.com/products/) from Node.js. It is being developed primarily to support the project [Calango](http://github.com/arturadib/calango) (HTML5 APIs for Node.js), but other contributions are welcome.
+Node-Qt provides native bindings to the [Qt library](http://qt.nokia.com/products/) from Node.js. It is being developed primarily to support the [Calango](http://github.com/arturadib/calango) project (HTML5 APIs for Node.js), but other contributions are welcome.
 
 
 
 
 
-## Hello world
+#### Hello world
 
 ```javascript
 var qt = require('..'),
@@ -27,7 +27,7 @@ window.paintEvent(function() {
 window.resize(300, 150);
 window.show();
 
-// Integrate with Node's event loop
+// Join Node's event loop
 setInterval(app.processEvents, 0);
 ```
 
@@ -40,7 +40,7 @@ See `examples/` for more.
 
 ## Building
 
-You will need to install Node's addon build tool [node-gyp](https://github.com/TooTallNate/node-gyp). From the node-qt project dir:
+You will need to install Node's addon build tool [node-gyp](https://github.com/TooTallNate/node-gyp). Then from the node-qt project dir:
 
 ```
 $ npm install -g node-gyp
@@ -56,9 +56,9 @@ There is no need to install Qt - the necessary binaries are bundled in `deps/`.
 
 
 
-## Creating new bindings
+## Contributing
 
-#### New class/files
+#### Creating new class/files
 
 1. Create your files (e.g. `qclass.h`, `qclass.cc`) from the provided templates `src/template.h`, `src/template.cc`
 2. `qclass.*`: search and replace all occurrences of `__Template__`, `__TEMPLATE__`, and `__template__` with the corresponding class name
@@ -67,7 +67,7 @@ There is no need to install Qt - the necessary binaries are bundled in `deps/`.
 5. `qt.cc`: Add `QClass::Initialize()` to `Initialize()`
 
 
-#### New method in existing file
+#### Creating new methods
 
 1. `qclass.h`: Declare static method as per `Example()` method in `template.h`
 2. `qclass.cc`: Implement method as per `Example()` in `template.cc`
@@ -95,4 +95,4 @@ is missing?
 
 **Segmentation fault**
 
-Tough luck. Did you forget to `new` a wrapped object?
+Tough luck :) Did you forget to `new` a wrapped object?
