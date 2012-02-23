@@ -42,7 +42,7 @@ For more, see `examples/` or the [Calango](http://github.com/arturadib/calango) 
 
 ## Building
 
-There is no need to install Qt - the necessary binaries are bundled in `deps/`. (Currently only Mac OS X is supported, but with minor work other platforms can be added). The dependencies come from Node's addon build tool [node-gyp](http://github.com/TooTallNate/node-gyp).
+There is no need to install Qt - the necessary binaries are bundled in `deps/`. (Currently only Mac OS X is supported, but with minor work other platforms can be added). The dependencies are the same as Node's addon build tool [node-gyp](http://github.com/TooTallNate/node-gyp).
 
 From the node-qt project dir, run:
 
@@ -70,7 +70,7 @@ Simple regression tests based on image differences are provided. Since different
 
 Please provide a test case for every new binding added. See `test/` for examples of unit tests.
 
-#### Creating new classes
+#### Binding to new classes
 
 1. Create your files (e.g. `qclass.h`, `qclass.cc`) from the provided templates `src/template.h`, `src/template.cc`
 2. `qclass.*`: search and replace all occurrences of `__Template__`, `__TEMPLATE__`, and `__template__` with the corresponding class name
@@ -79,7 +79,7 @@ Please provide a test case for every new binding added. See `test/` for examples
 5. `qt.cc`: Add `QClass::Initialize()` to `Initialize()`
 
 
-#### Creating new methods
+#### Binding to new methods
 
 1. `qclass.h`: Declare static method as per `Example()` method in `template.h`
 2. `qclass.cc`: Implement method as per `Example()` in `template.cc`
