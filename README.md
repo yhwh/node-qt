@@ -1,10 +1,8 @@
 # Node-Qt
 
-Node-Qt provides native C++ bindings to the [Qt library](http://developer.qt.nokia.com/doc/qt-4.8/) as a [Node.js addon](http://nodejs.org/docs/latest/api/addons.html). It is being developed primarily to support the [Calango](http://github.com/arturadib/calango) project (low-level HTML5 APIs for Node.js), so most of the implemented bindings concern graphics, audio, and input primitives from the `QtGui` module.
+Node-Qt provides native C++ bindings to the [Qt library](http://developer.qt.nokia.com/doc/qt-4.8/) as a [Node.js addon](http://nodejs.org/docs/latest/api/addons.html). It was initially created as part of the [Calango](http://github.com/arturadib/calango) project (hence most bindings so far concern `QtGui` primitives), but contributions towards other parts of Qt are welcome.
 
-Contributions towards other parts of Qt are welcome.
-
-
+At the moment, there is no documentation for available bindings in Node-Qt. We do try to follow [Qt's API](http://developer.qt.nokia.com/doc/qt-4.8/) as closely as possible, but sometimes quirks are inevitable. See the header files in `src/` for a list of available bindings, and comments in `.cc` files for possible API differences.
 
 
 

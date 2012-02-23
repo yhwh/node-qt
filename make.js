@@ -55,7 +55,7 @@ target.build = function() {
   nodegyp('clean');
 
   echo();
-  echo('Build successful. You can run the unit tests with:');
+  echo('Node-Qt build successful. You can run the unit tests with:');
   echo('   $ node make test');
 }
 
