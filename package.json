@@ -3,6 +3,5 @@
 , "author": "Artur Adib"
 , "description": "Qt bindings for Node.js"
 , "homepage": "http://github.com/arturadib/node-qt"
-, "engines": { "node": ">=0.6.0" }
 , "main": "./src/qt"
 }

@@ -42,21 +42,20 @@ For more, see `examples/` or the [Calango](http://github.com/arturadib/calango) 
 
 ## Building
 
-You will need to install Node's addon build tool [node-gyp](https://github.com/TooTallNate/node-gyp). There is no need to install Qt - the necessary binaries are bundled in `deps/`.
+There is no need to install Qt - the necessary binaries are bundled in `deps/`. (Currently only Mac OS X is supported, but with minor work other platforms can be added). The dependencies come from Node's addon build tool [node-gyp](http://github.com/TooTallNate/node-gyp).
 
 From the node-qt project dir, run:
 
 ```
-$ npm install -g node-gyp
-$ ./make.js
+$ node make
 ```
 
-and cross your fingers. (Currently only Mac OS X is supported, but with minor work other platforms can be added).
+and cross your fingers. This will install node-gyp in your project directory via npm, if it's not installed globally already.
 
 To run the unit tests:
 
 ```
-$ ./make.js test
+$ node make test
 ```
 
 Simple regression tests based on image differences are provided. Since different platforms generate different images based on several factors, it's likely these image-based regression tests will fail on your setup. Ignore those errors.

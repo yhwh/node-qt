@@ -1,20 +1,38 @@
 #!/usr/bin/env node
 require('./maker');
 
-var node = external('node', {required:true});
-var nodegyp = external('node-gyp', {required:true});
-var root = pwd();
+var node = external('node', {required:true}),
+    root = pwd();
 
 target.all = function() {
   target.build();
 }
 
 target.build = function() {
+
   cd(root);
   var bin = 'bin/';
 
   echo('_________________________________________________________________');
-  echo('Building Qt bindings');
+  echo('Building Node-Qt');
+  echo();
+
+  var nodegyp = external('./node_modules/.bin/node-gyp', {required:false}) || external('node-gyp', {required:false});
+
+  if (!nodegyp) {
+    var npm = external('npm', {required:true});
+    
+    echo('Installing node-gyp it in the current dir...');
+    var npmResult = npm('install node-gyp', {silent:true});
+    if (npmResult.code !== 0) {
+      echo('Could not install node-gyp using npm:');
+      echo();
+      echo(npmResult.output);
+      exit(1);
+    }
+    
+    nodegyp = external('./node_modules/.bin/node-gyp', {required:true});
+  }
 
   // Configure
   echo();
@@ -37,15 +55,15 @@ target.build = function() {
   nodegyp('clean');
 
   echo();
-  echo('Build successful. Binaries installed in:');
-  echo('   '+bin);
+  echo('Build successful. You can run the unit tests with:');
+  echo('   $ node make test');
 }
 
 target.test = function() {
   cd(root);
   
   echo('_________________________________________________________________');
-  echo('Running Qt binding tests');
+  echo('Running Node-Qt tests');
   echo();
   
   cd('test');
