@@ -3,3 +3,7 @@ build/
 bin/
 out/
 
+*Makefile*
+*gyp*
+!node-qt.gyp
+

@@ -444,22 +444,28 @@ global.exit = process.exit;
 //@
 //@ #### external('command', options)
 //@ Checks that the external `command` exists either as an absolute path or in the system `PATH`, 
-//@ and returns a callable function `fn(args, options)` that executes the command synchronously. 
+//@ and returns a callable function `function([args] [,options] [,callback])` that executes the 
+//@ command synchronously (default) or asynchronously. 
+//@
 //@ Available options:
 //@
-//@ + `required`: If `true`, will throw an error when command cannot be found. Default is `false`.
-//@ + `silent`: If `true` will suppress all output from command, otherwise both `stdout` and `stderr`
-//@ will be piped to the console.
+//@ + `required`: (Default is `false`) If `true`, will throw an error when command cannot be found.
+//@ + `silent`: (Default is `false`) If `true` will suppress all output from command, otherwise both `stdout` and `stderr`
+//@ will be redirected to the console.
+//@ + `async`: (Default is `false`) If `true` will call the optional `callback` argument to the 
+//@ callable function when the command is done, instead of blocking execution.
 //@
-//@ The callable function `fn()` returns the object `{ output:..., code:... }`, containing the
-//@ program's `output` (stdout + stderr) and its exit `code`.
+//@ When in synchronous mode the callable function returns the object `{ output:..., code:... }`, 
+//@ containing the program's `output` (stdout + stderr)  and its exit `code`. 
+//@ Otherwise the `callback` gets the arguments `(output, code)`.
 global.external = wrap('external', function(cmd, opts) {
   if (!cmd)
     error('must specify command');
 
   var options = extend({
     silent: false,
-    required: false
+    required: false,
+    async: false
   }, opts);
 
   var pathEnv = process.env.path || process.env.Path || process.env.PATH,
@@ -489,10 +495,8 @@ global.external = wrap('external', function(cmd, opts) {
     state.fatal = options.required;
     log('NO');
 
-    if (state.fatal) {
-      log('Fatal: could not find required command\n');
-      exit(1);
-    }
+    if (state.fatal)
+      error('Fatal: could not find required command');
 
     return null;
   }
@@ -500,11 +504,22 @@ global.external = wrap('external', function(cmd, opts) {
   log('OK');
   where = where || path.resolve(cmd);
 
-  return function(args, options2) {
+  // Callable function
+  return function(args, options2, callback) {
+    if (typeof args === 'function')
+        callback = args;
+    if (typeof options2 === 'function')
+        callback = options2;
+
     var thisOpts = extend({}, options); // clone 'global' opts
     thisOpts = extend(thisOpts, options2); // override global opts with local opts
-    return execSync(where, args, thisOpts);
-  }
+  
+    if (thisOpts.async)
+      execAsync(where, args, thisOpts, callback);
+    else
+      return execSync(where, args, thisOpts);
+
+  } // callable function
 });
 
 //@
@@ -835,6 +850,28 @@ function tempDir() {
   return state.tempDir;
 }
 
+// Wrapper around exec() to enable echoing output to console in real time
+function execAsync(cmd, args, opts, callback) {
+  var output = '';
+  
+  var c = child.exec(formCommandLine(cmd, args), {env: process.env}, function(err) {
+    if (callback) 
+      callback(output, err ? err.code : 0);
+  });
+
+  c.stdout.on('data', function(data) {
+    output += data;
+    if (!opts.silent)
+      write(data);
+  });
+
+  c.stderr.on('data', function(data) {
+    output += data;
+    if (!opts.silent)
+      write(data);
+  });
+}
+
 // Hack to run child_process.exec() synchronously (sync avoids callback hell)
 // Uses a custom wait loop that checks for a flag file, created when the child process is done.
 // (Can't do a wait loop that checks for internal Node variables/messages as
@@ -870,12 +907,7 @@ function execSync(cmd, args, opts) {
     return str;
   }
     
-  if (platform === 'win')
-    cmd = '\"'+cmd+'\"'; // wrap in quotes to avoid issues with space
-
-  var cmdLine = cmd + (args ? ' '+args : '');
-  
-  // Redirect output to output file
+  var cmdLine = formCommandLine(cmd, args);  
   cmdLine += ' > '+stdoutFile+' 2>&1'; // works on both win/unix
 
   var script = 
@@ -960,4 +992,12 @@ function extend(target) {
   });
   
   return target;
+}
+
+// Normalize platform-dependent command line
+function formCommandLine(cmd, args) {
+  if (platform === 'win')
+    cmd = '\"'+cmd+'\"'; // wrap in quotes to avoid issues with space
+
+  return cmd + (args ? ' '+args : '');
 }

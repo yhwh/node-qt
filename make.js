@@ -9,7 +9,6 @@ target.all = function() {
 }
 
 target.build = function() {
-
   cd(root);
   var bin = 'bin/';
 
@@ -82,4 +81,12 @@ target.ref = function() {
   echo('Qt tests: Overwriting reference images with most recent test output');
   rm('-f img-ref/*');
   mv('img-test/* img-ref');
+}
+
+target.clean = function() {
+  cd(root);
+
+  var nodegyp = external('./node_modules/.bin/node-gyp', {required:false}) || external('node-gyp', {required:false});
+  if (nodegyp)
+    nodegyp('clean');
 }
