@@ -23,6 +23,6 @@ exports.regression = function(name, pixmap, callback) {
   var testBuf = fs.readFileSync(testDir+name+'.png');
   var refBuf = fs.readFileSync(refDir+name+'.png');
   if (testBuf.toString() !== refBuf.toString()) {
-    console.log('!!! regression error in test:', name);
+    console.log('!!! image regression in test:', name);
   }
 }

@@ -1,8 +1,14 @@
 # Node-Qt
 
-Node-Qt provides native C++ bindings to the [Qt library](http://developer.qt.nokia.com/doc/qt-4.8/) as a [Node.js addon](http://nodejs.org/docs/latest/api/addons.html). It was initially created as part of the [Calango](http://github.com/arturadib/calango) project (hence most bindings so far concern `QtGui` primitives), but contributions towards other parts of Qt are welcome.
+Node-Qt provides native C++ bindings to the [Qt library](http://developer.qt.nokia.com/doc/qt-4.8/) as a [Node.js addon](http://nodejs.org/docs/latest/api/addons.html). It was initially created as part of the [Calango](http://github.com/arturadib/calango) project which binds mostly to `QtGui` primitives, but contributions towards other parts of Qt are welcome.
 
-At the moment, there is no documentation for available bindings. We do try to follow [Qt's API](http://developer.qt.nokia.com/doc/qt-4.8/) as closely as possible, but sometimes quirks are inevitable. See the header files in `src/` for a list of available bindings, and comments in `.cc` files for possible API differences.
+There is no documentation for available bindings at the moment. We do try to follow [Qt's API](http://developer.qt.nokia.com/doc/qt-4.8/) as closely as possible, but sometimes quirks are inevitable. See the header files in `src/` for a list of available bindings, and comments in `.cc` files for possible API differences.
+
+Supported platforms:
+
++ Mac OS X
++ Linux
+
 
 
 
@@ -38,12 +44,13 @@ For more, see `examples/` or the [Calango](http://github.com/arturadib/calango) 
 
 
 
-## Getting started
+
+## Building
 
 
-### Building
+### Mac
 
-There is no need to install Qt - the necessary binaries are bundled in `deps/`. (Currently only Mac OS X is supported, but with minor work other platforms can be added). The dependencies are the same as Node's addon build tool [node-gyp](http://github.com/TooTallNate/node-gyp).
+There is no need to install Qt - the necessary binaries are bundled in `deps/`. Since node-gyp is used for building addons, you will need its dependencies (Python, Make, and GCC).
 
 From the node-qt project dir, run:
 
@@ -51,10 +58,27 @@ From the node-qt project dir, run:
 $ node make
 ```
 
-and cross your fingers. This will install node-gyp in your project directory via npm (if it's not installed globally already), configure, and build all the necessary binaries.
+This will install node-gyp in your project directory via npm (if it's not installed globally already), configure, and build all the remaining binaries.
 
 
-### Running scripts
+### Linux
+
+You will need to install Qt and pkg-config. For example, on Ubuntu:
+
+```
+$ sudo apt-get install pkg-config qt-sdk
+$ node make
+```
+
+The `node make` command will install node-gyp in your project directory via npm (if it's not installed globally already), configure, and build all the remaining binaries. (If you are getting Gtk console warnings when running Node-Qt scripts, try `sudo apt-get install gtk2-engines-pixbuf`).
+
+
+
+
+
+
+
+## Running scripts
 
 If the build went well, you should be able to run scripts as usual, e.g. `$ node examples/helloworld.js`. To run the unit tests in `test`:
 

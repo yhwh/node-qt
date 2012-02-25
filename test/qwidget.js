@@ -104,8 +104,11 @@ var app = new qt.QApplication();
 
   // Triggers paintEvent()
   widget.show(); // capturedEvents: 0
+  app.processEvents();
+  assert.equal(capturedEvents[0], 'paintEvent');
 
   // Test mouse, keyboard, etc
+  capturedEvents = [];
   var events = new qt.QTestEventList();
   events.addMouseClick(qt.MouseButton.LeftButton); // capturedEvents: 1
   events.addMouseClick(qt.MouseButton.RightButton); // capturedEvents: 2
@@ -116,11 +119,10 @@ var app = new qt.QApplication();
   app.processEvents();
 
   // Event assertions
-  assert.equal(capturedEvents[0], 'paintEvent');
-  assert.equal(capturedEvents[1].button(), qt.MouseButton.LeftButton); // mousepress
-  assert.equal(capturedEvents[2].button(), qt.MouseButton.LeftButton); // mouserelease
-  assert.equal(capturedEvents[3].button(), qt.MouseButton.RightButton); // mousepress
-  assert.equal(capturedEvents[4].button(), qt.MouseButton.RightButton); // mouserelease
-  assert.equal(capturedEvents[5].text(), 'a'); // keypress
-  assert.equal(capturedEvents[6].key(), qt.Key.Key_Left); // keypress
+  assert.equal(capturedEvents[0].button(), qt.MouseButton.LeftButton); // mousepress
+  assert.equal(capturedEvents[1].button(), qt.MouseButton.LeftButton); // mouserelease
+  assert.equal(capturedEvents[2].button(), qt.MouseButton.RightButton); // mousepress
+  assert.equal(capturedEvents[3].button(), qt.MouseButton.RightButton); // mouserelease
+  assert.equal(capturedEvents[4].text(), 'a'); // keypress
+  assert.equal(capturedEvents[5].key(), qt.Key.Key_Left); // keypress
 }

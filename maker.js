@@ -425,9 +425,6 @@ global.mkdir = wrap('mkdir', function(str) {
     error('no directories given');
 
   dirs.forEach(function(dir) {
-    dir = path.normalize(dir);
-console.log('dir:', dir);
-console.log('exists:', fs.existsSync(dir));
     if (fs.existsSync(dir)) {
       if (!options.fullpath)
           error('path already exists: ' + dir, true);
