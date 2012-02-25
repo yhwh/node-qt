@@ -4,6 +4,8 @@ Node-Qt provides native bindings to the [Qt library](http://developer.qt.nokia.c
 
 There is no documentation for available bindings at the moment. We do try to follow [Qt's API](http://developer.qt.nokia.com/doc/qt-4.8/) as closely as possible, but sometimes quirks are inevitable. See the header files in `src/` for a list of available bindings, and comments in `.cc` files for possible API differences.
 
+Supported platforms: **Mac OS X** | **Windows** | **Linux**
+
 
 #### Hello world
 
@@ -41,9 +43,9 @@ For more, see `examples/` or the [Calango](http://github.com/arturadib/calango) 
 # Building
 
 
-## Mac
+## Mac, Windows
 
-There is no need to install Qt - the necessary binaries are bundled in `deps/`. Since node-gyp is used for building addons, you will need its dependencies (Python, Make, and GCC).
+There is no need to install Qt - the necessary binaries are bundled in `deps/`. Since [node-gyp](http://github.com/TooTallNate/node-gyp) is used for building the addon, you will need to have its dependencies installed. (**Mac:** Python, Make, GCC; **Windows:** Python, MSVC++ either [free](http://www.microsoft.com/visualstudio/en-us/products/2010-editions/visual-cpp-express) or commercial).
 
 From the node-qt project dir, run:
 
