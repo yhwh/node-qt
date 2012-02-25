@@ -40,8 +40,19 @@
             'deps/qt-4.8.0/darwin/x64/lib/QtGui.framework/QtGui', 
             'deps/qt-4.8.0/darwin/x64/lib/QtTest.framework/QtTest'
           ],
+        }],
+        ['OS=="linux"', {
+          'cflags': [
+            '<!@(pkg-config --cflags QtCore QtGui QtTest)'
+          ],
+          'ldflags': [
+            '<!@(pkg-config --libs-only-L --libs-only-other QtCore QtGui QtTest)'
+          ],
+          'libraries': [
+            '<!@(pkg-config --libs-only-l QtCore QtGui QtTest)'
+          ]
         }]
-      ],
+      ]
     }
   ]
 }
