@@ -4,11 +4,6 @@ Node-Qt provides native bindings to the [Qt library](http://developer.qt.nokia.c
 
 There is no documentation for available bindings at the moment. We do try to follow [Qt's API](http://developer.qt.nokia.com/doc/qt-4.8/) as closely as possible, but sometimes quirks are inevitable. See the header files in `src/` for a list of available bindings, and comments in `.cc` files for possible API differences.
 
-Supported platforms:
-
-+ **Mac OS X**
-+ **Linux**
-
 
 #### Hello world
 
