@@ -1,15 +1,13 @@
 # Node-Qt
 
-Node-Qt provides native C++ bindings to the [Qt library](http://developer.qt.nokia.com/doc/qt-4.8/) as a [Node.js addon](http://nodejs.org/docs/latest/api/addons.html). It was initially created as part of the [Calango](http://github.com/arturadib/calango) project which binds mostly to `QtGui` primitives, but contributions towards other parts of Qt are welcome.
+Node-Qt provides native bindings to the [Qt library](http://developer.qt.nokia.com/doc/qt-4.8/) as a [Node.js addon](http://nodejs.org/docs/latest/api/addons.html). It was initially created as part of the [Calango](http://github.com/arturadib/calango) project which binds mostly to low-level `QtGui` primitives, but bindings to other parts of Qt are welcome.
 
 There is no documentation for available bindings at the moment. We do try to follow [Qt's API](http://developer.qt.nokia.com/doc/qt-4.8/) as closely as possible, but sometimes quirks are inevitable. See the header files in `src/` for a list of available bindings, and comments in `.cc` files for possible API differences.
 
 Supported platforms:
 
-+ Mac OS X
-+ Linux
-
-
++ **Mac OS X**
++ **Linux**
 
 
 #### Hello world
@@ -45,10 +43,10 @@ For more, see `examples/` or the [Calango](http://github.com/arturadib/calango) 
 
 
 
-## Building
+# Building
 
 
-### Mac
+## Mac
 
 There is no need to install Qt - the necessary binaries are bundled in `deps/`. Since node-gyp is used for building addons, you will need its dependencies (Python, Make, and GCC).
 
@@ -61,7 +59,7 @@ $ node make
 This will install node-gyp in your project directory via npm (if it's not installed globally already), configure, and build all the remaining binaries.
 
 
-### Linux
+## Linux
 
 You will need to install Qt and pkg-config. For example, on Ubuntu:
 
@@ -78,23 +76,22 @@ The `node make` command will install node-gyp in your project directory via npm 
 
 
 
-## Running scripts
+# Running scripts
 
-If the build went well, you should be able to run scripts as usual, e.g. `$ node examples/helloworld.js`. To run the unit tests in `test`:
+If the build was successful, you should be able to run scripts as usual, for example:
 
 ```
-$ node make test
+$ node examples/helloworld.js
 ```
 
-Simple regression tests based on image differences are provided in addition to unit tests. Since different platforms generate different images based on several factors, it's likely these image-based regression tests will fail on your setup. Ignore those errors.
+To run scripts from outside the Node-Qt directory, simply `require()` the relative/absolute path to the `node-qt` directory, or move/symlink the `node-qt` folder into your project's `node_modules/`.
 
 
 
 
 
 
-
-## Contributing
+# Contributing
 
 Please provide a test case for every new binding added. See `test/` for examples of unit tests.
 
