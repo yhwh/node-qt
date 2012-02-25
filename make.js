@@ -89,4 +89,6 @@ target.clean = function() {
   var nodegyp = external('./node_modules/.bin/node-gyp', {required:false}) || external('node-gyp', {required:false});
   if (nodegyp)
     nodegyp('clean');
+
+  rm('-rf bin');
 }

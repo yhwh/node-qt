@@ -50,6 +50,7 @@ var width = 100, height = 100;
     paintEventCalled = true;
   });
   widget.show();
+  app.processEvents();
   assert.equal( paintEventCalled, true );
 }
 

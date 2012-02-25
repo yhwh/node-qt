@@ -27,10 +27,16 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF 
 // THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-// Load Qt bindindgs binary, ensuring we're in the right location so we can 
-// dynamically load the bundled Qt libraries
+//
+// Load bindings binary
+//
 var oldDir = process.cwd();
-process.chdir(__dirname + '/../deps/qt-4.8.0/' + process.platform + '/' + process.arch);
+try {
+  // ensure we're in the right location so we can dynamically load the bundled Qt libraries
+  process.chdir(__dirname + '/../deps/qt-4.8.0/' + process.platform + '/' + process.arch);
+} catch (e) {
+  // if no local deps/ dir, assume shared lib linking. keep going
+}
 var qt = require(__dirname + '/../bin/qt.node');
 process.chdir(oldDir);
 
