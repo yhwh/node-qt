@@ -6,7 +6,8 @@ Release/
 
 *vcxproj*
 *Makefile*
-*gyp*
 *.sln
-!node-qt.gyp
+
+*gyp*
+!bindings.gyp
 
