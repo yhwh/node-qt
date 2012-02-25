@@ -2,8 +2,11 @@ node_modules/
 build/
 bin/
 out/
+Release/
 
+*vcxproj*
 *Makefile*
 *gyp*
+*.sln
 !node-qt.gyp
 

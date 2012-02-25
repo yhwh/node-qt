@@ -70,7 +70,7 @@ void QWidgetImpl::paintEvent(QPaintEvent* e) {
     return;
 
   const unsigned argc = 0;
-  Handle<Value> argv[0] = {};
+  Handle<Value> argv[1] = {};
   Handle<Function> cb = Persistent<Function>::Cast(paintEventCallback_);
     
   cb->Call(Context::GetCurrent()->Global(), argc, argv);

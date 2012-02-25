@@ -603,9 +603,6 @@ global.external = wrap('external', function(cmd, opts) {
 
   write('Checking for external command availability: ' + cmd + ' ... ');
 
-  if (platform === 'win' && !cmd.match(/\.exe$/i))
-    cmd += '.exe';
-
   // No relative/absolute paths provided?
   if (cmd.search(/\//) === -1) {
     // Search for command in PATH
@@ -614,8 +611,29 @@ global.external = wrap('external', function(cmd, opts) {
         return; // already found it
 
       var attempt = path.resolve(dir + '/' + cmd);
-      if (fs.existsSync(attempt))
+      if (fs.existsSync(attempt)) {
         where = attempt;
+        return;
+      }
+
+      if (platform === 'win') {
+        var baseAttempt = attempt;
+        attempt = baseAttempt + '.exe';
+        if (fs.existsSync(attempt)) {
+          where = attempt;
+          return;
+        }
+        attempt = baseAttempt + '.cmd';
+        if (fs.existsSync(attempt)) {
+          where = attempt;
+          return;
+        }
+        attempt = baseAttempt + '.bat';
+        if (fs.existsSync(attempt)) {
+          where = attempt;
+          return;
+        }
+      } // if 'win'
     });
   }
     

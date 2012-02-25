@@ -50,8 +50,12 @@ target.build = function() {
   echo('Cleaning up...');
   rm('-rf '+bin);
   mkdir(bin);
-  mv('out/Release/qt.node '+bin);
-  nodegyp('clean');
+
+  // Deploy binary
+  if (exists('./out/Release'))
+    cp('-f out/Release/qt.node '+bin);
+  else if (exists('./Release'))
+    cp('-f ./Release/qt.node '+bin);
 
   echo();
   echo('Node-Qt build successful. You can run the unit tests with:');
